@@ -9,23 +9,24 @@ public class FabricaDePersonajes{
             var semilla = Environment.TickCount;
             var random = new Random(semilla); 
 
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 10; i++)
         {
                 int tiponum= random.Next(0,4);
                 TiposDePj tipo= (TiposDePj)tiponum;
                         Personaje nuevoEnemigo=new Personaje(){
-                        Velocidad= random.Next(10,1001)/1000*10,
+                        Velocidad= random.Next(100,1001)/100*10,
                         Tipo=tipo.ToString(),
-                        Destreza=random.Next(10,601)/600*10,
-                        Fuerza=random.Next(10,1001)/1000*1,
-                        Nivel=random.Next(10,1001)/1000*1,
-                        Defensa=random.Next(10,1001)/1000*1,
+                        Destreza=random.Next(100,601)/90*10,
+                        Fuerza=random.Next(100,1001)/80*10,
+                        Nivel=random.Next(100,1001)/100*10,
+                        Defensa=random.Next(500,1001)/100,
                         Salud= 100
                         };
-                listaOponentes.Add(nuevoEnemigo);       
+                listaOponentes.Add(nuevoEnemigo); 
+                 Console.WriteLine($"Tipo: {listaOponentes[i].Tipo}, Velocidad: {listaOponentes[i].Velocidad}, Fuerza: {listaOponentes[i].Fuerza}");         
         }
 
-    Console.WriteLine(listaOponentes);
+
     }
 
 

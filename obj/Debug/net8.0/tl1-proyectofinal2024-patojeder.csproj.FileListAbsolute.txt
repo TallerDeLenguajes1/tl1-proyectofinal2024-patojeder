@@ -12,3 +12,4 @@ C:\Users\patri\Documents\Taller de lenguajes 1\tl1-proyectofinal2024-patojeder\o
 C:\Users\patri\Documents\Taller de lenguajes 1\tl1-proyectofinal2024-patojeder\obj\Debug\net8.0\tl1-proyectofinal2024-patojeder.pdb
 C:\Users\patri\Documents\Taller de lenguajes 1\tl1-proyectofinal2024-patojeder\obj\Debug\net8.0\tl1-proyectofinal2024-patojeder.genruntimeconfig.cache
 C:\Users\patri\Documents\Taller de lenguajes 1\tl1-proyectofinal2024-patojeder\obj\Debug\net8.0\ref\tl1-proyectofinal2024-patojeder.dll
+C:\Users\patri\Documents\Taller de lenguajes 1\tl1-proyectofinal2024-patojeder\obj\Debug\net8.0\tl1-proyectofinal2024-patojeder.sourcelink.json
