@@ -133,7 +133,7 @@ string pikachu=@"
             '._)
 
 ";
-Console.WriteLine($"a)Bulbasur: {bulbasur} b)Charmander: {charmander} c)Squirtle: {squirtle} d)Pikachu: {pikachu}");
+Console.WriteLine($"a)Bulbasur: {bulbasur} \n b)Charmander: {charmander} \n c)Squirtle: {squirtle} \n d)Pikachu: {pikachu}");
 
 }
 }
