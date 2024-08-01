@@ -4,6 +4,10 @@ using mensajes;
 
 
 FabricaDePersonajes.CrearOponentes();
-
 Menu.MenuInicio();
 
+public class historialJson{
+
+
+    
+}

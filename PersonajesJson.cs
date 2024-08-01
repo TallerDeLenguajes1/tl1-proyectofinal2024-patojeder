@@ -9,6 +9,12 @@ public class PersonajesJson
         {
             try
             {
+                string directorio = Path.GetDirectoryName(nombreArchivo);//no hace falta(?)
+
+                if (!Directory.Exists(directorio))
+                {
+                    Directory.CreateDirectory(directorio);
+                }
                 string jsonString = JsonSerializer.Serialize(personajes);
                 File.WriteAllText(nombreArchivo, jsonString);
             }
