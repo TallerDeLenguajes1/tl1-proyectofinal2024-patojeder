@@ -32,27 +32,10 @@ namespace caracteristicasJugador
 
     }
 
- /*Personaje NuevoPersonaje(float experiencia, float velocidad, float destreza, float defensa, float fuerza){
-
-        Personaje nuevoplayer=new Personaje();
-        Experiencia= experiencia;
-        Fuerza=fuerza;
-        Destreza=destreza;
-        Defensa=defensa;
-        Velocidad=velocidad;
-        nivel=1;
-        Salud=100;
-
-
-        return nuevoplayer;
-    }*/
 
  public static string[] enemigos={"Sudogudo", "PayPal", "Helldry","Elon","Narutomon","Mewto", "DarkSide","Trump","Jaidel","Pangolin","Articuno","Unknown","Onix", "Camaleon", "BlackWarGreyMon", "Gauss", "Tom", "Vector", "Snake", "Harry", "Cheeta","MikeMon", "Zeus","DarkLord","Panteurus","Kundun","Tarkan","Devias","Noria","Kanturu","Bakan","Crywolf","Chikorita","SoulMaster","Icarus","SkullKing","Snorlax","Parrot","Crocodile","Entei","Lapras","Gurymon","Lizard","Goblin","Conkeldurr","Cottonee","Drifloon","Dugtrio","Garbodor","Herdier","Klefki","Alakazam","Magmar","Gyarados","Zapdos","Moltres","Kabutops","Scyther","Lugia", "Ho-Oh", "Tyranitar","Suicune","Raikou","Blaziken", "Palkia","Dialga","Giratina","Arceus","Darkai","Infernape","Rayquaza","Zeref","Xerneas","Yveltal","Zygarde","Eternatus","Urshifu","Heatran","Cresselia","Thundurus","Kubfu","Enamorus","Natsu","Larcade","Dragneel","DressRossa","Shanks","Gildarts","Gajeel","Omnimon"}; 
      
 }
-
-   
-
 
 
 }
