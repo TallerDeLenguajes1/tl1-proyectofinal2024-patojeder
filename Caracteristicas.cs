@@ -26,7 +26,7 @@ namespace caracteristicasJugador
     }
 
 
-        public Caracteristicas(float velocidad, float destreza, float defensa, float fuerza, string nombre){
+        public Caracteristicas(float velocidad, float destreza, float defensa, float fuerza, string nombre){// para el enemigo
             Experiencia= 0;
             Fuerza=fuerza;
             Destreza=destreza;
@@ -37,8 +37,7 @@ namespace caracteristicasJugador
             this.nombre=nombre;
     }
 
-        public Caracteristicas(float velocidad, float destreza, float defensa, float fuerza){
-            Experiencia= 0;
+        public Caracteristicas(float velocidad, float destreza, float defensa, float fuerza){//ver de poner nombre de pokemones al jugador
             Fuerza=fuerza;
             Destreza=destreza;
             Defensa=defensa;

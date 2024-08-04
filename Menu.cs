@@ -14,29 +14,38 @@ int edad;
             string entrada = Console.ReadLine();
             int.TryParse(entrada, out edad);
             Console.Write(edad);
-    } while (edad < 0 && edad > 120);
+    } while (edad < 0 || edad > 125);
 
 
         return edad;
 }
 
     public static DateTime ControlFechaNacimiento()
+{
+    DateTime fechaNacimiento;
+    DateTime fechaMinima = new DateTime(1900, 1, 1); // 124/125 años
+
+    while (true)
     {
-        DateTime fechaNacimiento;
-        while (true)
+        Console.Write("Ingrese la fecha de nacimiento (dd-MM-yyyy): ");
+        string entrada = Console.ReadLine();
+        if (DateTime.TryParseExact(entrada, "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out fechaNacimiento))
         {
-            Console.Write("Ingrese la fecha de nacimiento (yyyy-MM-dd): ");
-            string entrada = Console.ReadLine();
-            if (DateTime.TryParseExact(entrada, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out fechaNacimiento))
+            if (fechaNacimiento >= fechaMinima && fechaNacimiento <= DateTime.Today)
             {
                 return fechaNacimiento;
             }
             else
             {
-                Console.WriteLine("La fecha ingresada no es valida, ingresar una fecha en formato la en formato yyyy-MM-dd.");
+                Console.WriteLine("La fecha ingresada no esta dentro del rango permitido. La fecha debe ser estar entre 01-01-1900 y hoy.");
             }
         }
+        else
+        {
+            Console.WriteLine("La fecha ingresada no es valida. Asegurese de ingresar una fecha con el formato dd-MM-yyyy.");
+        }
     }
+}
 
 
     public static TiposDePj TipoElejido()
@@ -53,7 +62,7 @@ int edad;
             }
             else
             {
-                Console.WriteLine("Tipo no válido. Por favor, ingrese un número entre 0 y 3.");
+                Console.WriteLine("Tipo no valido. Por favor, ingrese un numero entre 0 y 3.");
             }
         }
     }       
@@ -83,6 +92,28 @@ int edad;
 
 
 
+    public static void mostrarGanadores(){
+        List<Datos> ganadores= HistorialJson.LeerGanadores("ganadores.txt");
+        int i=0;
+
+        while (i < ganadores.Count)
+        {
+            Console.WriteLine("\n**************************");
+            Console.WriteLine($"Nombre: {ganadores[i].Nombre}");
+            Console.WriteLine($"Fecha de nacimiento: {ganadores[i].FechaNac.ToShortDateString()}");
+            Console.WriteLine($"edad: {ganadores[i].Edad}");
+            Console.WriteLine($"Apodo: {ganadores[i].Apodo}");
+            Console.WriteLine($"Tipo de pokemon utilizado: {ganadores[i].Tipo}");
+            Console.WriteLine($"Fecha de creacion de partida: {ganadores[i].FechaPartida.ToLongDateString()}");
+            Console.WriteLine("\n**************************");
+            i++;
+        }
+
+
+    }
+
+
+
       public static void MenuInicio(List<Caracteristicas> enemigos){
 
         int opcion;
@@ -103,6 +134,10 @@ int edad;
         switch (opcion)
         {   case 1:
                     IniciarPartida(enemigos);
+            break;
+
+            case 2:
+                    mostrarGanadores();
             break;
             default: break;
         }
