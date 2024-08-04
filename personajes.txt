@@ -1,0 +1,102 @@
+[
+  {
+    "Velocidad": 51,
+    "Destreza": 94,
+    "Fuerza": 98,
+    "Nivel": 1,
+    "Defensa": 94,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "Kanturu"
+  },
+  {
+    "Velocidad": 65,
+    "Destreza": 92,
+    "Fuerza": 63,
+    "Nivel": 1,
+    "Defensa": 69,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "Devias"
+  },
+  {
+    "Velocidad": 84,
+    "Destreza": 64,
+    "Fuerza": 96,
+    "Nivel": 1,
+    "Defensa": 59,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "DressRossa"
+  },
+  {
+    "Velocidad": 68,
+    "Destreza": 57,
+    "Fuerza": 52,
+    "Nivel": 1,
+    "Defensa": 85,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "Zeus"
+  },
+  {
+    "Velocidad": 51,
+    "Destreza": 80,
+    "Fuerza": 62,
+    "Nivel": 1,
+    "Defensa": 78,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "Gurymon"
+  },
+  {
+    "Velocidad": 56,
+    "Destreza": 64,
+    "Fuerza": 86,
+    "Nivel": 1,
+    "Defensa": 83,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "DarkSide"
+  },
+  {
+    "Velocidad": 69,
+    "Destreza": 79,
+    "Fuerza": 88,
+    "Nivel": 1,
+    "Defensa": 93,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "Entei"
+  },
+  {
+    "Velocidad": 81,
+    "Destreza": 59,
+    "Fuerza": 62,
+    "Nivel": 1,
+    "Defensa": 76,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "Snake"
+  },
+  {
+    "Velocidad": 53,
+    "Destreza": 57,
+    "Fuerza": 51,
+    "Nivel": 1,
+    "Defensa": 88,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "Onix"
+  },
+  {
+    "Velocidad": 56,
+    "Destreza": 71,
+    "Fuerza": 72,
+    "Nivel": 1,
+    "Defensa": 74,
+    "Salud": 100,
+    "Experiencia": 0,
+    "Nombre": "Gauss"
+  }
+]

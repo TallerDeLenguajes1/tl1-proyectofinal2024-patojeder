@@ -1,13 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using caracteristicasJugador;
 using mensajes;
+using espacioPersonajesJson;
+
+//FabricaDePersonajes.CrearOponentes();
 
 
-FabricaDePersonajes.CrearOponentes();
-Menu.MenuInicio();
-
-public class historialJson{
-
-
-    
+if (PersonajesJson.Existe("personajes.txt"))
+{
+    Menu.MenuInicio(PersonajesJson.LeerPersonajes("personajes.txt"));
+}else
+{
+   PersonajesJson.GuardarPersonajes(FabricaDePersonajes.CrearOponentes(), "personajes.txt");
+   Menu.MenuInicio(PersonajesJson.LeerPersonajes("personajes.txt")); 
 }
+
+

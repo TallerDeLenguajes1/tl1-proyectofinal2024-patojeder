@@ -13,17 +13,7 @@ namespace caracteristicasJugador
         public  int Edad { get => edad; set => edad = value; }
         public TiposDePj Tipo { get => tipo; set => tipo = value; }
 
-        public Datos(string nombre, string apodo, DateTime fechaNac, int edad, TiposDePj tipo){
-            this.edad=edad;
-            this.nombre=nombre;
-            this.fechaNac=fechaNac;
-            this.apodo=apodo;
-            this.Tipo=tipo;
 
-        }
-        public void NuevoJugador(){
-
-        }
 
         public Datos(string nombre, string apodo, int edad, DateTime fechaNac, TiposDePj tipo){
 

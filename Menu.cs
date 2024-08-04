@@ -1,4 +1,5 @@
 using caracteristicasJugador;
+using configuracionDePelea;
 
 namespace mensajes
 {
@@ -8,11 +9,12 @@ public class Menu{
 public static int ControlEdad(){
 int edad;
     do
-    { 
+    {       
             Console.Write("Ingrese su edad, para ser considerada valida (0 a 100 años): ");
             string entrada = Console.ReadLine();
             int.TryParse(entrada, out edad);
-    } while (edad > 0 && edad < 120);
+            Console.Write(edad);
+    } while (edad < 0 && edad > 120);
 
 
         return edad;
@@ -42,7 +44,7 @@ int edad;
         int tipo;
         while (true)
         {
-            Console.WriteLine("Seleccione el tipo (\n1) Tipo Agua\n 2) Tipo Fuego\n 3) Tipo Hoja\n 4) Tipo Rayo): ");
+            Console.WriteLine("Seleccione el tipo (\n0) Tipo Agua\n 1) Tipo Fuego\n 2) Tipo Hoja\n 3) Tipo Rayo): ");
             string input = Console.ReadLine();
             int.TryParse(input, out tipo);
             if (tipo >= 0 && tipo < 4)
@@ -57,7 +59,7 @@ int edad;
     }       
 
 
-    public static void IniciarPartida()
+    public static void IniciarPartida(List<Caracteristicas> enemigos)
     {
         Console.Write("Ingrese el nombre: ");
         string nombre = Console.ReadLine();
@@ -75,12 +77,13 @@ int edad;
         Console.WriteLine($"Apodo: {apodo}");
         Console.WriteLine($"Tipo: {tipo}");
         Mensajes.ElegirPokemon(tipo);
-        //Datos nuevoPlayer= new Datos(nombre, apodo, edad, fechaNacimiento, tipo);
+        Datos nuevoPlayer= new Datos(nombre, apodo, edad, fechaNacimiento, tipo);
+        Pelea.TorneoPokemon(FabricaDePersonajes.CrearJugador(tipo), enemigos, nuevoPlayer);
     }
 
 
 
-      public static void MenuInicio(){
+      public static void MenuInicio(List<Caracteristicas> enemigos){
 
         int opcion;
         do
@@ -99,7 +102,7 @@ int edad;
 
         switch (opcion)
         {   case 1:
-                    IniciarPartida();
+                    IniciarPartida(enemigos);
             break;
             default: break;
         }

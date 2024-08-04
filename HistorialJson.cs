@@ -1,26 +1,34 @@
 // See https://aka.ms/new-console-template for more information
-using System.Text.Json;
 using caracteristicasJugador;
-namespace espacioPersonajesJson{
-
-public class PersonajesJson
-    {
-        public static void GuardarPersonajes(List<Caracteristicas> personajes, string nombreArchivo)
+using System.Text.Json;
+//CONTROLAR SI ESTE ARCHIVO ESTA BIEN
+public class HistorialJson
+{
+        public static void GuardarGanador(Datos datosJugador, string nombreArchivo)
         {
             try
             {
-                string jsonString = JsonSerializer.Serialize(personajes, new JsonSerializerOptions{WriteIndented = true});//si le agrego eso quda mas lindo a la vista
+                List<Datos> historial = new List<Datos>();
+
+                if (File.Exists(nombreArchivo))
+                {
+                    string jsonStringExistente = File.ReadAllText(nombreArchivo);
+                    historial = JsonSerializer.Deserialize<List<Datos>>(jsonStringExistente);
+                }
+
+                // agrego losdatos
+                historial.Add(datosJugador);
+                string jsonString = JsonSerializer.Serialize(historial);
                 File.WriteAllText(nombreArchivo, jsonString);
-                //control
-                Console.WriteLine("Personajes guardados exitosamente.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al guardar personajes: {ex.Message}");
+                Console.WriteLine($"Error al guardar el ganador: {ex.Message}");
             }
         }
 
-        public static List<Caracteristicas> LeerPersonajes(string nombreArchivo)
+
+        public static List<Datos> LeerGanadores(string nombreArchivo)
         {
             try
             {
@@ -30,18 +38,14 @@ public class PersonajesJson
                 }    
 
                 string jsonString = File.ReadAllText(nombreArchivo);
-                //return JsonSerializer.Deserialize<List<Caracteristicas>>(jsonString);
-                List<Caracteristicas> personajes = JsonSerializer.Deserialize<List<Caracteristicas>>(jsonString);
-                //Console.WriteLine("Personajes leídos exitosamente.");
-                return personajes;
+                return JsonSerializer.Deserialize<List<Datos>>(jsonString);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al leer personajes: {ex.Message}");
                 return null;
             }
-        }
-        
+        }        
         public static bool Existe(string nombreArchivo)
         {
             try
@@ -53,8 +57,6 @@ public class PersonajesJson
                 Console.WriteLine($"Error al verificar existencia del archivo: {ex.Message}");
                 return false;
             }
-        }     
+        }
 
-
-    }
 }
