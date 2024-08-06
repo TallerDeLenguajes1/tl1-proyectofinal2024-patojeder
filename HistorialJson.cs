@@ -46,7 +46,7 @@ public class HistorialJson
                 return null;
             }
         }        
-        public static bool Existe(string nombreArchivo)//no hace falta usarla
+        public static bool Existe(string nombreArchivo)
         {
             try
             {

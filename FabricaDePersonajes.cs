@@ -26,19 +26,19 @@ public static Caracteristicas CrearJugador(TiposDePj tipo){
     switch (tipo)
     {
         case TiposDePj.agua:
-        Caracteristicas nuevoAgua=new Caracteristicas(random.Next(50,80), random.Next(50,91), random.Next(80,101), random.Next(50,101));
+        Caracteristicas nuevoAgua=new Caracteristicas(random.Next(50,80), random.Next(50,91), random.Next(80,101), random.Next(50,101), "Squirtle");
         return nuevoAgua;
 
         case TiposDePj.fuego:
-        Caracteristicas nuevoFuego=new Caracteristicas(random.Next(70,101), random.Next(50,101), random.Next(70,101), random.Next(50,101));
+        Caracteristicas nuevoFuego=new Caracteristicas(random.Next(70,101), random.Next(50,101), random.Next(70,101), random.Next(50,101), "Charmander");
         return nuevoFuego;
 
         case TiposDePj.hoja:
-        Caracteristicas nuevoHoja=new Caracteristicas(random.Next(60,101), random.Next(80,101), random.Next(50,101), random.Next(50,101));
+        Caracteristicas nuevoHoja=new Caracteristicas(random.Next(60,101), random.Next(80,101), random.Next(50,101), random.Next(50,101),"Bulbasaur");
         return nuevoHoja;
 
         case TiposDePj.rayo:
-        Caracteristicas nuevoRayo=new Caracteristicas(random.Next(50,101), random.Next(80,101), random.Next(60,101), random.Next(50,81));
+        Caracteristicas nuevoRayo=new Caracteristicas(random.Next(50,101), random.Next(80,101), random.Next(60,101), random.Next(50,81), "Pikachu");
         return nuevoRayo;
 
         default:

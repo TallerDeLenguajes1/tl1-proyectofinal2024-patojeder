@@ -1,12 +1,12 @@
 using caracteristicasJugador;
 using configuracionDePelea;
-
+using EspacioApi;
 namespace mensajes
 {
 
 public class Menu{
 
-public static int ControlEdad(){
+/*public static int ControlEdad(){
 int edad;
     do
     {       
@@ -18,7 +18,24 @@ int edad;
 
 
         return edad;
+}*/
+
+
+
+public static int CalcularEdad(DateTime fechaNacimiento){//
+int edad;
+        DateTime fechaDeHoy = DateTime.Today;
+        edad = fechaDeHoy.Year - fechaNacimiento.Year;
+
+        if (fechaNacimiento.Date < fechaDeHoy.AddYears(-edad))//llevo la fechade hoy "edad" de años para atras yt las comparo 
+        {
+            edad=edad-1;
+        }
+
+
+    return edad;
 }
+
 
     public static DateTime ControlFechaNacimiento()
 {
@@ -53,7 +70,7 @@ int edad;
         int tipo;
         while (true)
         {
-            Console.WriteLine("Seleccione el tipo (\n0) Tipo Agua\n 1) Tipo Fuego\n 2) Tipo Hoja\n 3) Tipo Rayo): ");
+            Console.WriteLine("Seleccione el tipo:\n0) Tipo Agua.\n 1) Tipo Fuego.\n 2) Tipo Hoja.\n 3) Tipo Rayo ");
             string input = Console.ReadLine();
             int.TryParse(input, out tipo);
             if (tipo >= 0 && tipo < 4)
@@ -68,26 +85,30 @@ int edad;
     }       
 
 
-    public static void IniciarPartida(List<Caracteristicas> enemigos)
+    public static async Task IniciarPartida(List<Caracteristicas> enemigos)
     {
         Console.Write("Ingrese el nombre: ");
         string nombre = Console.ReadLine();
 
-        int edad = ControlEdad();
+        
         DateTime fechaNacimiento = ControlFechaNacimiento();
-        Console.Write("Ingrese el apodo: ");
+        int edad = CalcularEdad(fechaNacimiento);
+        Console.WriteLine("Ingrese el apodo: ");
         string apodo = Console.ReadLine();
         TiposDePj tipo = TipoElejido();
-
+        Console.WriteLine("*****************");
         Console.WriteLine("\nDatos ingresados:");
-        Console.WriteLine($"Nombre: {nombre}");
-        Console.WriteLine($"Edad: {edad}");
+        Console.WriteLine($"Nombre: {nombre}"); 
         Console.WriteLine($"Fecha de Nacimiento: {fechaNacimiento.ToShortDateString()}");
+        Console.WriteLine($"Edad: {edad}");
         Console.WriteLine($"Apodo: {apodo}");
         Console.WriteLine($"Tipo: {tipo}");
-        Mensajes.ElegirPokemon(tipo);
+        string nombreDelPokemon=Mensajes.ElegirPokemon(tipo);
+        List<Abilidad> habilidades = await TrabajandoApi.ObtenerHabilidades(nombreDelPokemon);
+        Console.WriteLine("*****************");
+        
         Datos nuevoPlayer= new Datos(nombre, apodo, edad, fechaNacimiento, tipo);
-        Pelea.TorneoPokemon(FabricaDePersonajes.CrearJugador(tipo), enemigos, nuevoPlayer);
+        Pelea.TorneoPokemon(FabricaDePersonajes.CrearJugador(tipo), enemigos, nuevoPlayer, habilidades, nombreDelPokemon);
     }
 
 
@@ -114,8 +135,9 @@ int edad;
 
 
 
-      public static void MenuInicio(List<Caracteristicas> enemigos){
-
+      public static async Task MenuInicio(List<Caracteristicas> enemigos){//poner task y async
+        Mensajes.Biemvenido();
+        //List<Abilidad> habilidades = await TrabajandoApi.ObtenerHabilidades("charmander");
         int opcion;
         do
         {
@@ -133,13 +155,23 @@ int edad;
 
         switch (opcion)
         {   case 1:
-                    IniciarPartida(enemigos);
+                     await IniciarPartida(enemigos);//le saque habilidades
             break;
 
             case 2:
-                    mostrarGanadores();
+
+                    if (HistorialJson.Existe("ganadores.txt"))
+                    {
+                        mostrarGanadores();
+                    }else
+                    {
+                        Console.WriteLine("\n Todavia no aparecieron entrenadores dignos");
+                    }
+
             break;
-            default: break;
+            
+            default: 
+            break;
         }
 
         }
