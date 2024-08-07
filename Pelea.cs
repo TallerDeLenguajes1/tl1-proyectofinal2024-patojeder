@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using caracteristicasJugador;
 using EspacioApi;
+using mensajes;
 namespace configuracionDePelea
 {
     
@@ -14,7 +15,7 @@ do
 {
 
 
-    Console.WriteLine("\nEs tu turno. Selecciona el ataque a realizar");
+    Mensajes.mensajeSeleccionAtaque();
     Console.WriteLine("Ataque 1: Puñetazo");
 
     Console.WriteLine($"Ataque especial 2: {habilidades[0].NombreAbilidad}");
@@ -62,8 +63,10 @@ public static float AtaqueUsuario(int opcion, Caracteristicas jugador){
 }
 
 public static float AtaqueMaquina(Caracteristicas enemigo){
-
-    return enemigo.Fuerza * enemigo.Velocidad * (float)Math.Sqrt(enemigo.Destreza)/5000 + enemigo.Nivel * (enemigo.Experiencia+1);
+    var semilla = Environment.TickCount;
+    var random = new Random(semilla);
+    float coeficienteMiss= random.Next(0,30);
+    return (coeficienteMiss+100)/100 * enemigo.Fuerza * enemigo.Velocidad * (float)Math.Sqrt(enemigo.Destreza)/5000 + enemigo.Nivel * (enemigo.Experiencia+1);
 
 }
 
@@ -87,7 +90,7 @@ public static int MecanicaPelea(Caracteristicas jugador, Caracteristicas enemigo
         if (jugador.Salud>0)
         {
 
-            Console.WriteLine("\nEs tu turno");
+            Console.WriteLine("\n☆ ☆ ☆ Es tu turno ☆ ☆ ☆");
             Thread.Sleep(1500);
             opAtaque= SeleccionarAtaque(habilidades);
             ataqueDelUsuario= (float)Math.Round( AtaqueUsuario(opAtaque, jugador),2);
@@ -101,7 +104,7 @@ public static int MecanicaPelea(Caracteristicas jugador, Caracteristicas enemigo
             if (enemigo.Salud>0)
             {
 
-                Console.WriteLine($"\nLa Salud de tu enemigo ahora es de: {enemigo.Salud} % HP");                
+                Console.WriteLine($"\nLa Salud de tu enemigo ahora es de: {enemigo.Salud} ♥ % HP");                
             }                
     
         }
@@ -109,7 +112,7 @@ public static int MecanicaPelea(Caracteristicas jugador, Caracteristicas enemigo
         if (enemigo.Salud>0)
         {
             Thread.Sleep(1500);
-            Console.WriteLine("\nTu turno ha terminado. Le toca a tu enemigo\n");
+            Mensajes.mensajeFinDeTurno();
             
             ataqueDeLaMaquina=(float)Math.Round(AtaqueMaquina(enemigo) - PeleaDefensa(jugador),2);
             DanioProvocado=(float)Math.Round(ataqueDeLaMaquina,2);
@@ -122,7 +125,7 @@ public static int MecanicaPelea(Caracteristicas jugador, Caracteristicas enemigo
             if (jugador.Salud>0)
             {
 
-                Console.WriteLine($"\nTu salud ahora es de: {jugador.Salud} % HP");
+                Console.WriteLine($"\nTu salud ahora es de: {jugador.Salud} ♥ % HP");
                 Thread.Sleep(1500);
             }
         }
@@ -131,11 +134,11 @@ public static int MecanicaPelea(Caracteristicas jugador, Caracteristicas enemigo
 
         if (jugador.Salud <= 0)
         {
-            mensajes.Mensajes.mensajeDerrota();
+            Mensajes.mensajeDerrota();
             return 0;
         }else
         {
-            mensajes.Mensajes.mensajeVictoria();
+            Mensajes.mensajeVictoria();
             jugador.Experiencia=jugador.Experiencia+1;
             jugador.Destreza=jugador.Destreza+3;
             jugador.Salud=100;
@@ -170,9 +173,9 @@ int numeroDePelea=1;
             Console.WriteLine($"\nCuando un entrenador pokemon escuche sobre {nuevoPlayer.Apodo}, sabra que fue un maestro pokemon de {nuevoPlayer.Edad} años que domino las batallas con su pokemon tipo {nuevoPlayer.Tipo}");
             HistorialJson.GuardarGanador(nuevoPlayer,"ganadores.txt");
         }else
-        {   mensajes.Mensajes.msjeTryAgain();
+        {   Mensajes.msjeTryAgain();
             Thread.Sleep(1500);
-            Console.WriteLine("\nMejor ntentalo en otra ocasion");
+            Console.WriteLine("\nMejor intentalo en otra ocasion ʕ•́ᴥ•̀ʔっ");
            
         }
 }

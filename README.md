@@ -8,7 +8,7 @@ En este juego deberas elegir un pokemon, centrarte en el, y poner a prueba tu ha
 
 ## Modalidad del juego
 
-El juego consta de combates pvp 1 vs 1 donde el entrenador se enfrentara a distintos enemigos, conforme vaya derrotando a tus enemigos, tu pokemon ira aumentando capacidades, como ser su nivel de combate, asi como su experiencia tambien. A medida que sube de nivel, el nivel de los proximos adversarios tambien sera mayor. Una vez que hayas derrotados 10 adversarios y por ende, hayas alcanzado el nivel 10. Se te otorgara el titulode maestro pokemon
+El juego consta de combates pvp 1 vs 1 donde el entrenador se enfrentara a distintos enemigos, conforme vayas derrotando a tus enemigos, tu pokemon ira aumentando capacidades, como ser su nivel de combate, asi como su experiencia y destreza tambien. A medida que subes de nivel, el nivel de los proximos adversarios tambien sera mayor. Una vez que hayas derrotados 10 adversarios y por ende, hayas alcanzado el nivel maximo. Se te otorgara el titulo de maestro pokemon
 
 ### Primeros pasos
 
@@ -39,7 +39,7 @@ El juego consta de combates pvp 1 vs 1 donde el entrenador se enfrentara a disti
 #### Informacion
 En este proyecto se utilizo una api gratuita de pokemon para poder hacer uso de los nombres de las abilidades de los pokemones de interes/ utilizados, en la seccion de **seleccion de ataque** 
 - link api utilizada:https://pokeapi.co/
-Metodo de uso general: colocar el nombre del pokemon deseado en el lugar **nombrePokemon** para obtener la informacion general de un pokemon.
+- Metodo de uso general: colocar el nombre del pokemon deseado en el lugar **nombrePokemon** para obtener la informacion general de un pokemon.
 https://pokeapi.co/api/v2/pokemon/**nombrePokemon**
 
 A partir de la api pokemon podremos acceder a los poderes de un determinado pokemon solicitado.

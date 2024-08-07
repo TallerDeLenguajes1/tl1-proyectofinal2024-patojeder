@@ -55,24 +55,35 @@ string mensajeDerrota=@"
 Console.WriteLine(mensajeDerrota);
 }
 
-
+public static void mensajeSeleccionAtaque(){
+string mensajeDeAtaques=@"
+╔══════════════════════════════════╗
+║ Selecciona el ataque a realizar. ║
+╚══════════════════════════════════╝";
+Console.WriteLine(mensajeDeAtaques);
+}
 
 public static void mensajeVictoria(){
 string mensajeVictoria=@"
-
 ╔═══════════════════════════════════════════════════════════════════╗
-║ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ Has Derrotado a tu enemnigo ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ║  
-╚═══════════════════════════════════════════════════════════════════╝                                              
-
+║ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ HAS DERROTADO A TU ENEMIGO  ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ╬ ║  
+╚═══════════════════════════════════════════════════════════════════╝
 ";
-
-
-
 Console.WriteLine(mensajeVictoria);
 }
 
+public static void mensajeFinDeTurno(){
+string mensajeFinDeturno=@"
+
+╔═════════════════════════════════════════════╗
+║ Tu turno ha terminado. Le toca a tu enemigo ║
+╚═════════════════════════════════════════════╝";
+Console.WriteLine(mensajeFinDeturno);
+}
+
+
 public static void msjeTryAgain(){
-string tryagain=@"                                    
+string tryAgain=@"                                    
 ╔═════════╗ ╔═══════╗   ╔═══╗    ╔═══╗               
 ╚══╗  ╔═══╝ ║  ███  ║   ║   ║    ║   ║             
    ║  ║     ║     ══╝   ║   ╚════╝   ║               
@@ -80,17 +91,17 @@ string tryagain=@"
    ║  ║     ║  ║  \ \        ║  ║               
    ╚══╝     ╚══╝   ═══       ╚══╝                
 
-
-    ╔══════╗        ══════════════╗         ╔══════╗      ╔═══╗   ╔═══╗     ╔═══╗
-    ║  ███ ║       /  ╔═══════════╝         ║  ███ ║      ║   ║   ║   ║     ║   ║
-  ╔═╝      ╚═╗    /   ║                   ╔═╝      ╚═╗    ║   ║   ║   ╚═╗   ║   ║
+                                                           ═══
+    ╔══════╗      ╔═══════════════╗         ╔══════╗      ╔═══╗   ╔═══╗     ╔═══╗
+    ║  ███ ║      ║   ╔═══════════╝         ║  ███ ║      ║   ║   ║   ║     ║   ║
+  ╔═╝      ╚═╗    ║   ║                   ╔═╝      ╚═╗    ║   ║   ║   ╚═╗   ║   ║
   ║  ╔═══╗   ║    ║   ║      ╔══════╗     ║  ╔═══╗   ║    ║   ║   ║   ╔╗╚═╗ ║   ║
 ╔═╝  ║   ║   ║    ║   ║      ╚═══╗  ║   ╔═╝  ║   ║   ║    ║   ║   ║   ║╚═╗╚═╝   ║   
 ║    ║   ║   ║    ║   ║          ║  ║   ║    ║   ║   ║    ║   ║   ║   ║  ╚══╗   ║
 ╚════╝   ╚═══╝    ║   ╚══════════╝  ║   ╚════╝   ╚═══╝    ╚═══╝   ╚═══╝     ╚═══╝
                   ╚═════════════════╝                     
 ";                                                                            
-Console.WriteLine(tryagain);
+Console.WriteLine(tryAgain);
 }
                   
 

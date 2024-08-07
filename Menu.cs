@@ -93,7 +93,7 @@ public class Menu{
         Console.WriteLine($"Tipo: {tipo}");
         string nombreDelPokemon=Mensajes.ElegirPokemon(tipo);
         List<Abilidad> habilidades = await TrabajandoApi.ObtenerHabilidades(nombreDelPokemon);
-        Console.WriteLine("*****************");
+        Console.WriteLine("**  ***************");
         
         Datos nuevoPlayer= new Datos(nombre, apodo, edad, fechaNacimiento, tipo);
         Pelea.TorneoPokemon(FabricaDePersonajes.CrearJugador(tipo), enemigos, nuevoPlayer, habilidades, nombreDelPokemon);
