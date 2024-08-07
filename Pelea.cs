@@ -45,15 +45,15 @@ public static float AtaqueUsuario(int opcion, Caracteristicas jugador){
     {   
         case 1:
         float coeficienteMiss= random.Next(30,70);
-        return (coeficienteMiss / 100 * ataqueEcuacion/(cteDeAjuste-3000))+(jugador.Experiencia*jugador.Nivel/3);
+        return (coeficienteMiss / 100 * ataqueEcuacion/(cteDeAjuste-3000))+((float)Math.Sqrt(jugador.Experiencia)*jugador.Nivel/3);
 
         case 2:
         float coeficienteMiss2= random.Next(30,100);
-        return (coeficienteMiss2 / 100 * ataqueEcuacion/(cteDeAjuste - 3500))+(jugador.Experiencia*jugador.Nivel/2);
+        return (coeficienteMiss2 / 100 * ataqueEcuacion/(cteDeAjuste - 3500))+((float)Math.Sqrt(jugador.Experiencia)*jugador.Nivel/2);
 
         case 3:
         float coeficienteMiss3= random.Next(0,101);
-        return (coeficienteMiss3 / 100 * ataqueEcuacion/(cteDeAjuste - 4000))+(jugador.Experiencia*jugador.Nivel);
+        return (coeficienteMiss3 / 100 * ataqueEcuacion/(cteDeAjuste - 4000))+((float)Math.Sqrt(jugador.Experiencia)*jugador.Nivel);
 
         default:
         return 0;
@@ -88,50 +88,56 @@ public static int MecanicaPelea(Caracteristicas jugador, Caracteristicas enemigo
         {
 
             Console.WriteLine("\nEs tu turno");
+            Thread.Sleep(1500);
             opAtaque= SeleccionarAtaque(habilidades);
             ataqueDelUsuario= (float)Math.Round( AtaqueUsuario(opAtaque, jugador),2);
             DanioProvocado= (float)Math.Round(ataqueDelUsuario - PeleaDefensa(enemigo),2);
             DanioProvocado=(float)Math.Round(Math.Max(0,DanioProvocado),2);
             enemigo.Salud=(float)Math.Round(enemigo.Salud - DanioProvocado,2);
-
-            Console.WriteLine($"\nTu ataque causo {DanioProvocado} de danio");
+            Thread.Sleep(1500);
+            Console.WriteLine($"\nTu ataque causo {DanioProvocado} de daño");
+            Thread.Sleep(1500);
 
             if (enemigo.Salud>0)
             {
 
                 Console.WriteLine($"\nLa Salud de tu enemigo ahora es de: {enemigo.Salud} % HP");                
             }                
-
+    
         }
 
         if (enemigo.Salud>0)
         {
+            Thread.Sleep(1500);
             Console.WriteLine("\nTu turno ha terminado. Le toca a tu enemigo\n");
+            
             ataqueDeLaMaquina=(float)Math.Round(AtaqueMaquina(enemigo) - PeleaDefensa(jugador),2);
             DanioProvocado=(float)Math.Round(ataqueDeLaMaquina,2);
             DanioProvocado=(float)Math.Round(Math.Max(0,DanioProvocado),2);
             jugador.Salud= (float)Math.Round(jugador.Salud - DanioProvocado,2);
-            Console.WriteLine($"\nTu enemigo ataco infringiedote {DanioProvocado} de danio");
+            Thread.Sleep(1500);
+            Console.WriteLine($"\nTu enemigo ataco infringiedote {DanioProvocado} de daño");
+            Thread.Sleep(1500);
             
             if (jugador.Salud>0)
             {
 
                 Console.WriteLine($"\nTu salud ahora es de: {jugador.Salud} % HP");
+                Thread.Sleep(1500);
             }
         }
 
-            //controlar que sea un daño logico, pega muy poco a veces 
         }
 
         if (jugador.Salud <= 0)
         {
-
-            Console.WriteLine("\nTu Salud ha llegado cero, has sido brutalmente derrotado, no tienes lo suficiente para ser un maestro pokemon.");
+            mensajes.Mensajes.mensajeDerrota();
             return 0;
         }else
         {
-            Console.WriteLine("\nHas Derrotado a tu enemnigo");
-            jugador.Experiencia=jugador.Experiencia+2;
+            mensajes.Mensajes.mensajeVictoria();
+            jugador.Experiencia=jugador.Experiencia+1;
+            jugador.Destreza=jugador.Destreza+3;
             jugador.Salud=100;
             jugador.Nivel=jugador.Nivel + 1;
             return 1;
@@ -142,24 +148,32 @@ public static void TorneoPokemon(Caracteristicas jugador, List<Caracteristicas> 
 
 int vida=1;
 int indiceEnemigoActual=0;
+int numeroDePelea=1;
 
-        while (vida==1 && jugador.Nivel<10 && indiceEnemigoActual < enemigo.Count)
-        {           Console.WriteLine($"\nEn la siguiente pelea se enfrenta tu {jugador.Nombre} VS {enemigo[indiceEnemigoActual].Nombre}");
+        while (vida==1 && jugador.Nivel<11)//controolar
+        {           Console.WriteLine($"\nPelea numero {numeroDePelea}.\nEn la siguiente pelea se enfrenta tu {jugador.Nombre} VS {enemigo[indiceEnemigoActual].Nombre}");
                     vida=MecanicaPelea(jugador, enemigo[indiceEnemigoActual], habilidades, nombreDelPokemon);
-                    indiceEnemigoActual++;
+                    
+                    if (indiceEnemigoActual<=8)
+                    {
+                        indiceEnemigoActual++;
+                    }
                     enemigo[indiceEnemigoActual].Experiencia=indiceEnemigoActual;
                     enemigo[indiceEnemigoActual].Nivel=indiceEnemigoActual;
+                    numeroDePelea++;
         }
 
-        if (jugador.Nivel==10)
+        if (jugador.Nivel==11)
         {
             Console.WriteLine("\nFelicidades, has alcanzado el nivel 10, te convertiste en un maestro pokemon.");
             Console.WriteLine($"\n{nuevoPlayer.Nombre}, desde ahora en adelante formas parte de un selecto grupo");
             Console.WriteLine($"\nCuando un entrenador pokemon escuche sobre {nuevoPlayer.Apodo}, sabra que fue un maestro pokemon de {nuevoPlayer.Edad} años que domino las batallas con su pokemon tipo {nuevoPlayer.Tipo}");
             HistorialJson.GuardarGanador(nuevoPlayer,"ganadores.txt");
         }else
-        {
-            Console.WriteLine("\nIntentalo en otra ocasion");
+        {   mensajes.Mensajes.msjeTryAgain();
+            Thread.Sleep(1500);
+            Console.WriteLine("\nMejor ntentalo en otra ocasion");
+           
         }
 }
 

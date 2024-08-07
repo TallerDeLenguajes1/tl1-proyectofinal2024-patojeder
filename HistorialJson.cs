@@ -16,7 +16,7 @@ public class HistorialJson
                     historial = JsonSerializer.Deserialize<List<Datos>>(jsonStringExistente);
                 }
 
-                // agrego losdatos
+
                 historial.Add(datosJugador);
                 string jsonString = JsonSerializer.Serialize(historial);
                 File.WriteAllText(nombreArchivo, jsonString);

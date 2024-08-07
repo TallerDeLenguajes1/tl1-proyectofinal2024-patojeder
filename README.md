@@ -25,7 +25,7 @@ El juego consta de combates pvp 1 vs 1 donde el entrenador se enfrentara a disti
  ### Combates
 
  - **combates por turnos**: Los combates se realizaran de a turno, podras elegir entre las habilidades 1ue dispone tu pokemon para ocasionarle daño a tu oponente. Una vez que los puntos de salud de tu oponente lleguen a cero, ganaras la batalla.
- - **Ataques: podras elegir el modo de atacar a tu enemigo.
+ - **Ataques**: podras elegir el modo de atacar a tu enemigo.
  - **Victorias**: Cada ataque le ocasiona daño a tu rival. Saldras victorioso cuando los puntos de salud de tu oponente lleguen a cero.
  - **Diversidad de combates: Cada combate trae consigo un enemigo distinto y una complejidad distinta.
  - **C'EST FINI**: El juego termina cuando alcanzas las 10 victorias o cuando eres derrotado en combate.
@@ -35,3 +35,19 @@ El juego consta de combates pvp 1 vs 1 donde el entrenador se enfrentara a disti
  ### Premio
  Aquellos que pierdan, caheran en la deshonra.
  Aquellos que ganen sus 10 combates, no solo se regocijaran por el **titulo de maestro Pokemon**, sino que tambien formaran parte de un selecto grupo que quedara en **la historia de los combates Pokemon**.
+
+#### Informacion
+En este proyecto se utilizo una api gratuita de pokemon para poder hacer uso de los nombres de las abilidades de los pokemones de interes/ utilizados, en la seccion de **seleccion de ataque** 
+- link api utilizada:https://pokeapi.co/
+Metodo de uso general: colocar el nombre del pokemon deseado en el lugar **nombrePokemon** para obtener la informacion general de un pokemon.
+https://pokeapi.co/api/v2/pokemon/**nombrePokemon**
+
+A partir de la api pokemon podremos acceder a los poderes de un determinado pokemon solicitado.
+
+- Repositorio de git: https://github.com/TallerDeLenguajes1/tl1-proyectofinal2024-patojeder
+
+ ##### **Autor: Jeder, Patricio Javier.**
+
+
+
+

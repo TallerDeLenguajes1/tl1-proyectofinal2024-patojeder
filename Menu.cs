@@ -1,3 +1,4 @@
+using System.ComponentModel.Design.Serialization;
 using caracteristicasJugador;
 using configuracionDePelea;
 using EspacioApi;
@@ -6,45 +7,30 @@ namespace mensajes
 
 public class Menu{
 
-/*public static int ControlEdad(){
-int edad;
-    do
-    {       
-            Console.Write("Ingrese su edad, para ser considerada valida (0 a 100 años): ");
-            string entrada = Console.ReadLine();
-            int.TryParse(entrada, out edad);
-            Console.Write(edad);
-    } while (edad < 0 || edad > 125);
+    public static int CalcularEdad(DateTime fechaNacimiento){//corregida
+    int edad;
+            DateTime fechaDeHoy = DateTime.Now;
+            edad = fechaDeHoy.Year - fechaNacimiento.Year;
 
-
-        return edad;
-}*/
-
-
-
-public static int CalcularEdad(DateTime fechaNacimiento){//
-int edad;
-        DateTime fechaDeHoy = DateTime.Today;
-        edad = fechaDeHoy.Year - fechaNacimiento.Year;
-
-        if (fechaNacimiento.Date < fechaDeHoy.AddYears(-edad))//llevo la fechade hoy "edad" de años para atras yt las comparo 
+        if ( fechaDeHoy.DayOfYear < fechaNacimiento.DayOfYear)
         {
-            edad=edad-1;
+                return edad-1;
+        }else
+        {
+                return edad;
         }
 
-
-    return edad;
-}
+    }
 
 
-    public static DateTime ControlFechaNacimiento()
-{
+    public static DateTime ControlFechaNacimiento(){
+
     DateTime fechaNacimiento;
-    DateTime fechaMinima = new DateTime(1900, 1, 1); // 124/125 años
+    DateTime fechaMinima = new DateTime(1900, 1, 1);
 
     while (true)
     {
-        Console.Write("Ingrese la fecha de nacimiento (dd-MM-yyyy): ");
+        Console.Write("\nIngrese la fecha de nacimiento (dd-MM-yyyy): ");
         string entrada = Console.ReadLine();
         if (DateTime.TryParseExact(entrada, "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out fechaNacimiento))
         {
@@ -54,12 +40,12 @@ int edad;
             }
             else
             {
-                Console.WriteLine("La fecha ingresada no esta dentro del rango permitido. La fecha debe ser estar entre 01-01-1900 y hoy.");
+                Console.WriteLine("\nLa fecha ingresada no esta dentro del rango permitido. La fecha debe ser estar entre 01-01-1900 y hoy.");
             }
         }
         else
         {
-            Console.WriteLine("La fecha ingresada no es valida. Asegurese de ingresar una fecha con el formato dd-MM-yyyy.");
+            Console.WriteLine("\nLa fecha ingresada no es valida. Asegurese de ingresar una fecha con el formato dd-MM-yyyy.");
         }
     }
 }
@@ -67,34 +53,36 @@ int edad;
 
     public static TiposDePj TipoElejido()
     {
-        int tipo;
-        while (true)
-        {
-            Console.WriteLine("Seleccione el tipo:\n0) Tipo Agua.\n 1) Tipo Fuego.\n 2) Tipo Hoja.\n 3) Tipo Rayo ");
-            string input = Console.ReadLine();
-            int.TryParse(input, out tipo);
-            if (tipo >= 0 && tipo < 4)
-            {
-                return (TiposDePj)tipo;
-            }
-            else
-            {
-                Console.WriteLine("Tipo no valido. Por favor, ingrese un numero entre 0 y 3.");
-            }
+        int tipo = 0;
+        Console.WriteLine("Seleccione el tipo:\n0) Tipo Agua.\n 1) Tipo Fuego.\n 2) Tipo Hoja.\n 3) Tipo Rayo ");
+        while(!int.TryParse(Console.ReadLine(), out tipo) && !(tipo>=0 && tipo<4)){
+            Console.WriteLine("Tipo no valido. Por favor, ingrese un numero entre 0 y 3.");
         }
-    }       
+        return (TiposDePj)tipo;
+    }      
 
 
-    public static async Task IniciarPartida(List<Caracteristicas> enemigos)
-    {
+    public static async Task IniciarPartida(List<Caracteristicas> enemigos){
+
         Console.Write("Ingrese el nombre: ");
         string nombre = Console.ReadLine();
+        while (nombre=="" || nombre==" " || nombre==null)
+        {
+            Console.WriteLine("ingrese un nombre valido");
+            nombre = Console.ReadLine();
+        }
 
         
         DateTime fechaNacimiento = ControlFechaNacimiento();
         int edad = CalcularEdad(fechaNacimiento);
-        Console.WriteLine("Ingrese el apodo: ");
+        Console.Write("Ingrese el apodo: ");
         string apodo = Console.ReadLine();
+        while (apodo=="" || apodo==" " || apodo==null)
+        {
+            Console.WriteLine("Ingrese un apodo valido");
+            apodo = Console.ReadLine();
+        }
+
         TiposDePj tipo = TipoElejido();
         Console.WriteLine("*****************");
         Console.WriteLine("\nDatos ingresados:");
@@ -135,13 +123,18 @@ int edad;
 
 
 
-      public static async Task MenuInicio(List<Caracteristicas> enemigos){//poner task y async
+      public static async Task MenuInicio(List<Caracteristicas> enemigos){
         Mensajes.Biemvenido();
-        //List<Abilidad> habilidades = await TrabajandoApi.ObtenerHabilidades("charmander");
+
         int opcion;
+
         do
         {
-            Console.WriteLine("\n 1) Empezar una nueva partida.\n 2) Consultar el historial de ganadores. \n 3) Salir. ");
+            
+     
+        do
+        {
+            Mensajes.Menu();
             
             string op=Console.ReadLine();
             int.TryParse(op, out opcion);
@@ -155,7 +148,7 @@ int edad;
 
         switch (opcion)
         {   case 1:
-                     await IniciarPartida(enemigos);//le saque habilidades
+                     await IniciarPartida(enemigos);
             break;
 
             case 2:
@@ -173,8 +166,8 @@ int edad;
             default: 
             break;
         }
-
-        }
+        } while (opcion!=3);
+    }
 
   }
 

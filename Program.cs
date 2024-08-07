@@ -11,4 +11,3 @@ if (PersonajesJson.Existe("personajes.txt"))
    PersonajesJson.GuardarPersonajes(FabricaDePersonajes.CrearOponentes(), "personajes.txt");
    await Menu.MenuInicio(PersonajesJson.LeerPersonajes("personajes.txt")); 
 }
-
