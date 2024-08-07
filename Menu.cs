@@ -7,7 +7,7 @@ namespace mensajes
 
 public class Menu{
 
-    public static int CalcularEdad(DateTime fechaNacimiento){//corregida
+    public static int CalcularEdad(DateTime fechaNacimiento){
     int edad;
             DateTime fechaDeHoy = DateTime.Now;
             edad = fechaDeHoy.Year - fechaNacimiento.Year;

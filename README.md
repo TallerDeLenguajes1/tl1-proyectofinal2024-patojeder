@@ -13,7 +13,7 @@ El juego consta de combates pvp 1 vs 1 donde el entrenador se enfrentara a disti
 ### Primeros pasos
 
  Antes de sumergirnos en el mundo de las batallas, tenemos que saber que tipo de entrenador estaremos evaluando en los combates, para eso, es necesario que nos brindes tu informacion y la naturaleza o tipo de pokemon que deseas entrenar.
- A los os nuevos aspirantes a mastro pokemon se le asigna un pokemon segun el tipo 1ue desean entrenar, de esta manera, un nuevo aspirante puede elegir entre pokemones de tipo:
+ A los nuevos aspirantes a mastro pokemon se le asigna un pokemon segun el tipo que desean entrenar, de esta manera, un nuevo aspirante puede elegir entre pokemones de tipo:
 
  - **Agua**
  - **Fuego**
@@ -27,7 +27,7 @@ El juego consta de combates pvp 1 vs 1 donde el entrenador se enfrentara a disti
  - **combates por turnos**: Los combates se realizaran de a turno, podras elegir entre las habilidades 1ue dispone tu pokemon para ocasionarle daño a tu oponente. Una vez que los puntos de salud de tu oponente lleguen a cero, ganaras la batalla.
  - **Ataques**: podras elegir el modo de atacar a tu enemigo.
  - **Victorias**: Cada ataque le ocasiona daño a tu rival. Saldras victorioso cuando los puntos de salud de tu oponente lleguen a cero.
- - **Diversidad de combates: Cada combate trae consigo un enemigo distinto y una complejidad distinta.
+ - **Diversidad de combates**: Cada combate trae consigo un enemigo distinto y una complejidad distinta.
  - **C'EST FINI**: El juego termina cuando alcanzas las 10 victorias o cuando eres derrotado en combate.
 
  Y recuerda: Por cada combate que ganes, tu pokemon sumara experiencia, los enemigos proximos a enfrentar seran mas fuertes. Debes aprovechar esa experiencia obtenida para sacar ventaja.

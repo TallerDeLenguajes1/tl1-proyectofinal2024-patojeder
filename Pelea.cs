@@ -35,12 +35,12 @@ return opcion;
 
 }
 
-//controlar ecuaciones de daño
+
 public static float AtaqueUsuario(int opcion, Caracteristicas jugador){
     var semilla = Environment.TickCount;
     var random = new Random(semilla);
     float ataqueEcuacion;
-    ataqueEcuacion= jugador.Fuerza * jugador.Velocidad * (float)Math.Sqrt(jugador.Destreza);// me sirve para trabajar con floaty no con double
+    ataqueEcuacion= jugador.Fuerza * jugador.Velocidad * (float)Math.Sqrt(jugador.Destreza);
     float cteDeAjuste=5000;
     switch (opcion)
     {   
@@ -78,14 +78,14 @@ public static float PeleaDefensa(Caracteristicas combatiente){
 }
 
 
-public static int MecanicaPelea(Caracteristicas jugador, Caracteristicas enemigo, List<Abilidad> habilidades, string nombreDelPokemon){//devuelve int
+public static int MecanicaPelea(Caracteristicas jugador, Caracteristicas enemigo, List<Abilidad> habilidades, string nombreDelPokemon){
     int opAtaque;
     float ataqueDelUsuario;
     float ataqueDeLaMaquina;
     float DanioProvocado;
     
         while (jugador.Salud>0 && enemigo.Salud>0)
-        {//separa los turnos x if
+        {
 
         if (jugador.Salud>0)
         {
@@ -153,7 +153,7 @@ int vida=1;
 int indiceEnemigoActual=0;
 int numeroDePelea=1;
 
-        while (vida==1 && jugador.Nivel<11)//controolar
+        while (vida==1 && jugador.Nivel<11)
         {           Console.WriteLine($"\nPelea numero {numeroDePelea}.\nEn la siguiente pelea se enfrenta tu {jugador.Nombre} VS {enemigo[indiceEnemigoActual].Nombre}");
                     vida=MecanicaPelea(jugador, enemigo[indiceEnemigoActual], habilidades, nombreDelPokemon);
                     

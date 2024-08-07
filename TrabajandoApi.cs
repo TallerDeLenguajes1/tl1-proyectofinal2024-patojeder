@@ -52,5 +52,4 @@ namespace EspacioApi
     
 }
 
-//como debo modificar las otras funciones para que no se me corte el programa
 
