@@ -30,9 +30,7 @@ public class PersonajesJson
                 }    
 
                 string jsonString = File.ReadAllText(nombreArchivo);
-                //return JsonSerializer.Deserialize<List<Caracteristicas>>(jsonString);
                 List<Caracteristicas> personajes = JsonSerializer.Deserialize<List<Caracteristicas>>(jsonString);
-                //Console.WriteLine("Personajes leídos exitosamente.");
                 return personajes;
             }
             catch (Exception ex)

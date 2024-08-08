@@ -24,7 +24,7 @@ namespace mensajes
                                         `'                            '-._|";
          
           Console.WriteLine(pokemon);
-          Console.WriteLine("Biemvenido a Pokemon combates"); 
+          Console.WriteLine("Biemvenido a Pokemon Tournament"); 
          
         }
 

@@ -1,7 +1,6 @@
 // See https://aka.ms/new-console-template for more information
 using caracteristicasJugador;
 using System.Text.Json;
-//CONTROLAR SI ESTE ARCHIVO ESTA BIEN
 public class HistorialJson
 {
         public static void GuardarGanador(Datos datosJugador, string nombreArchivo)

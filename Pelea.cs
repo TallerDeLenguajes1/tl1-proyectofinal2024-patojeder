@@ -46,7 +46,7 @@ public static float AtaqueUsuario(int opcion, Caracteristicas jugador){
     {   
         case 1:
         float coeficienteMiss= random.Next(30,70);
-        return (coeficienteMiss / 100 * ataqueEcuacion/(cteDeAjuste-3000))+((float)Math.Sqrt(jugador.Experiencia)*jugador.Nivel/3);
+        return (coeficienteMiss / 100 * ataqueEcuacion/(cteDeAjuste - 3000))+((float)Math.Sqrt(jugador.Experiencia)*jugador.Nivel/3);
 
         case 2:
         float coeficienteMiss2= random.Next(30,100);
@@ -156,9 +156,9 @@ int numeroDePelea=1;
         while (vida==1 && jugador.Nivel<11)
         {           Console.WriteLine($"\nPelea numero {numeroDePelea}.\nEn la siguiente pelea se enfrenta tu {jugador.Nombre} VS {enemigo[indiceEnemigoActual].Nombre}");
                     vida=MecanicaPelea(jugador, enemigo[indiceEnemigoActual], habilidades, nombreDelPokemon);
-                    
+                    enemigo[indiceEnemigoActual].Salud=100;
                     if (indiceEnemigoActual<=8)
-                    {
+                    {  
                         indiceEnemigoActual++;
                     }
                     enemigo[indiceEnemigoActual].Experiencia=indiceEnemigoActual;

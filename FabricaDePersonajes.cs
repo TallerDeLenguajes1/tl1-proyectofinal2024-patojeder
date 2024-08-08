@@ -2,7 +2,7 @@
 namespace caracteristicasJugador{
 
 
-public class FabricaDePersonajes{//ver de retornar la lista
+public class FabricaDePersonajes{
     public static List<Caracteristicas> CrearOponentes(){
         
 
