@@ -1,6 +1,7 @@
 
 using System.Security.Cryptography.X509Certificates;
 using caracteristicasJugador;
+using EspacioApi;
 
 namespace mensajes
 {
@@ -220,37 +221,68 @@ string charmander=@"
 
 ";
 
-switch (tipo)
-{
-  case TiposDePj.agua:
-    Console.WriteLine("\n Por haber elegido el tipo agua, se le adjudico el pokemon conocido como:  Squirtle");
-    Console.WriteLine(squirtle);
-    Console.WriteLine("Ahora te toca enfrentarte a guerreros, quizas mas fuerte que tu, suerte en esta aventura guerrero");
-  return "squirtle";
+  switch (tipo)
+  {
+    case TiposDePj.agua:
+      Console.WriteLine("\n Por haber elegido el tipo agua, se le adjudico el pokemon conocido como:  Squirtle");
+      Console.WriteLine(squirtle);
+      Console.WriteLine("Ahora te toca enfrentarte a guerreros, quizas mas fuerte que tu, suerte en esta aventura guerrero");
+    return "squirtle";
 
-  case TiposDePj.fuego:
-    Console.WriteLine("\n Por haber elegido el tipo fuego, se le adjudico el pokemon conocido como: Charmander");
-    Console.WriteLine(charmander);
-    Console.WriteLine("Ahora te toca enfrentarte a guerreros, quizas mas fuerte que tu, suerte en esta aventura guerrero");
-  return "charmander";
+    case TiposDePj.fuego:
+      Console.WriteLine("\n Por haber elegido el tipo fuego, se le adjudico el pokemon conocido como: Charmander");
+      Console.WriteLine(charmander);
+      Console.WriteLine("Ahora te toca enfrentarte a guerreros, quizas mas fuerte que tu, suerte en esta aventura guerrero");
+    return "charmander";
 
-  case TiposDePj.hoja:
-    Console.WriteLine("\n Por haber elegido el tipo hoja, se le adjudico el pokemon conocido como: Bulbasaur");
-    Console.WriteLine(bulbasur);
-    Console.WriteLine("Ahora te toca enfrentarte a guerreros, quizas mas fuerte que tu, suerte en esta aventura guerrero");
-  return "bulbasaur";
+    case TiposDePj.hoja:
+      Console.WriteLine("\n Por haber elegido el tipo hoja, se le adjudico el pokemon conocido como: Bulbasaur");
+      Console.WriteLine(bulbasur);
+      Console.WriteLine("Ahora te toca enfrentarte a guerreros, quizas mas fuerte que tu, suerte en esta aventura guerrero");
+    return "bulbasaur";
 
-  case TiposDePj.rayo:
-    Console.WriteLine("\n Por haber elegido el tipo agua, se le adjudico el pokemon conocido como:  Pikachu");
-    Console.WriteLine(pikachu);
-    Console.WriteLine("Ahora te toca enfrentarte a guerreros, quizas mas fuerte que tu, suerte en esta aventura guerrero");  
-  return "pikachu";
-  default:
-  return "";
-
-}
-    }
+    case TiposDePj.rayo:
+      Console.WriteLine("\n Por haber elegido el tipo agua, se le adjudico el pokemon conocido como:  Pikachu");
+      Console.WriteLine(pikachu);
+      Console.WriteLine("Ahora te toca enfrentarte a guerreros, quizas mas fuerte que tu, suerte en esta aventura guerrero");  
+    return "pikachu";
+    default:
+    return "";
 
   }
+}
+
+
+public static List<Abilidad> CargarHabilidadesPorDefecto(string nombreDelPokemon){
+  var habilidades = new List<Abilidad>();
+
+  switch (nombreDelPokemon)
+    {
+      case "pikachu":
+          habilidades.Add(new Abilidad { NombreAbilidad = "Tacleada de voltios" });
+          habilidades.Add(new Abilidad { NombreAbilidad = "Impactrueno" });
+          break;
+      case "bulbasaur":
+          habilidades.Add(new Abilidad { NombreAbilidad = "Latigo cepa" });
+          habilidades.Add(new Abilidad { NombreAbilidad = "Fotosintesis" });
+          break;
+      case "squirtle":
+          habilidades.Add(new Abilidad { NombreAbilidad = "Chorro de agua" });
+          habilidades.Add(new Abilidad { NombreAbilidad = "Garra de poseidon" });
+          break;
+      case "charmander":
+          habilidades.Add(new Abilidad { NombreAbilidad = "Lanzallamas" });
+          habilidades.Add(new Abilidad { NombreAbilidad = "Poder solar" });
+          break;
+      default:
+          Console.WriteLine("No hay habilidades.");
+          break;
+    }
+
+            return habilidades;
+}
+
+
+}
 
 }

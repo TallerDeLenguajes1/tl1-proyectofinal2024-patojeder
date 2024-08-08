@@ -1,5 +1,6 @@
 // See https://aka.ms/new-console-template for more information
 using System.Text.Json;
+using mensajes;
 
 
 namespace EspacioApi
@@ -8,6 +9,10 @@ namespace EspacioApi
     {   private string nombreAbilidad;
 
         public string NombreAbilidad { get => nombreAbilidad; set => nombreAbilidad = value; }
+
+        public Abilidad(){
+            
+        }
     }
 
     public class TrabajandoApi
@@ -19,7 +24,7 @@ namespace EspacioApi
             var habilidades = new List<Abilidad>();
             try
             {
-                var url = $"https://pokeapi.co/api/v2/pokemon/{nombreDelPokemon}";
+                var url = $"https://pokeapi.co/api/v2/pokemon/{nombreDelPokemon.ToLower()}";
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
@@ -36,11 +41,13 @@ namespace EspacioApi
                 else
                 {
                     Console.WriteLine("El JSON no contiene la propiedad 'abilities'.");
+                    habilidades=Mensajes.CargarHabilidadesPorDefecto(nombreDelPokemon);
                 }
             }
             catch (HttpRequestException Exception)
             {
                 Console.WriteLine($"Error al obtener las habilidades: {Exception.Message}");
+                habilidades=Mensajes.CargarHabilidadesPorDefecto(nombreDelPokemon);
             }
 
             return habilidades;
