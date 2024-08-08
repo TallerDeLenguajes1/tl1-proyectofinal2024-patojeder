@@ -30,7 +30,7 @@ public class Menu{
 
     while (true)
     {
-        Console.Write("\nIngrese la fecha de nacimiento (dd-MM-yyyy): ");
+        Console.Write("\nIngrese su fecha de nacimiento (dd-MM-yyyy): ");
         string entrada = Console.ReadLine();
         if (DateTime.TryParseExact(entrada, "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out fechaNacimiento))
         {
@@ -51,35 +51,43 @@ public class Menu{
 }
 
 
-    public static TiposDePj TipoElejido()
+public static TiposDePj TipoElejido()
+{
+    int tipo;
+    bool valido;
+    do
     {
-        int tipo = 0;
-        Console.WriteLine("Seleccione el tipo:\n0) Tipo Agua.\n 1) Tipo Fuego.\n 2) Tipo Hoja.\n 3) Tipo Rayo ");
-        while(!int.TryParse(Console.ReadLine(), out tipo) && !(tipo>=0 && tipo<4)){
+        Console.WriteLine("Seleccione el tipo de pokemon que desea:\n0) Tipo Agua.\n1) Tipo Fuego.\n2) Tipo Hoja.\n3) Tipo Rayo ");
+        string tipoString = Console.ReadLine();
+        valido = int.TryParse(tipoString, out tipo) && tipo >= 0 && tipo <= 3;
+        if (!valido)
+        {
             Console.WriteLine("Tipo no valido. Por favor, ingrese un numero entre 0 y 3.");
         }
-        return (TiposDePj)tipo;
-    }      
+    } while (!valido);
+
+    return (TiposDePj)tipo;
+}   
 
 
     public static async Task IniciarPartida(List<Caracteristicas> enemigos){
 
-        Console.Write("Ingrese el nombre: ");
+        Console.Write("Ingrese su nombre: ");
         string nombre = Console.ReadLine();
         while (nombre=="" || nombre==" " || nombre==null)
         {
-            Console.WriteLine("ingrese un nombre valido");
+            Console.WriteLine("Ingrese un nombre valido.");
             nombre = Console.ReadLine();
         }
 
         
         DateTime fechaNacimiento = ControlFechaNacimiento();
         int edad = CalcularEdad(fechaNacimiento);
-        Console.Write("Ingrese el apodo: ");
+        Console.Write("Ingrese su apodo: ");
         string apodo = Console.ReadLine();
         while (apodo=="" || apodo==" " || apodo==null)
         {
-            Console.WriteLine("Ingrese un apodo valido");
+            Console.WriteLine("Ingrese un apodo valido.");
             apodo = Console.ReadLine();
         }
 
